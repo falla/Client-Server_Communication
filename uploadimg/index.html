@@ -1,0 +1,29 @@
+<html>
+<body>
+<form action="upload_file.php" method="post" target="post_frame" enctype="multipart/form-data" id="editor-form" name="form1" >
+<label for="file">Filename:</label>
+<input type="file" name="file" id="file" /> <input type="hidden" name="filepath" />
+<br />
+<input type="submit" name="submit" value="Submit" />
+</form> <div id="ooo"> </div>
+   
+ 
+ <script type="text/javascript" src="/jquery.min.js"></script>   <script src="/jquery.form.js"></script> 
+		<script type="text/javascript">
+			$(document).ready(function() {
+  $('#editor-form').submit(function() {
+    var options = {
+      target: '#ooo',
+      url: 'upload_file.php',
+      type: 'post',
+      success: function() {
+        $('#filepath').val($('#ooo').text());
+      }
+    };
+    $(this).ajaxSubmit(options);
+    return false;
+  });
+});
+		</script>
+</body>
+</html>
